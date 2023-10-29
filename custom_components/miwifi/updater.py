@@ -514,13 +514,13 @@ class LuciUpdater(DataUpdateCoordinator):
 
         if "wan" in response and isinstance(response["wan"], dict):
             # fmt: off
-            data[ATTR_SENSOR_WAN_DOWNLOAD_SPEED] = float(
+            data[ATTR_SENSOR_WAN_DOWNLOAD_SPEED] = (float(
                 response["wan"]["downspeed"]
-            ) if "downspeed" in response["wan"] else 0
+            ) / 1024 / 1024) if "downspeed" in response["wan"] else 0
 
-            data[ATTR_SENSOR_WAN_UPLOAD_SPEED] = float(
+            data[ATTR_SENSOR_WAN_UPLOAD_SPEED] = (float(
                 response["wan"]["upspeed"]
-            ) if "upspeed" in response["wan"] else 0
+            ) / 1024/ 1024) if "upspeed" in response["wan"] else 0
             # fmt: on
 
     async def _async_prepare_vpn(self, data: dict) -> None:

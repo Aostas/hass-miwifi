@@ -69,7 +69,7 @@ ONLY_WAN: Final = (
 )
 
 PCS: Final = "pcs"
-BS: Final = "B/s"
+BS: Final = "MB/s"
 
 MIWIFI_SENSORS: tuple[SensorEntityDescription, ...] = (
     SensorEntityDescription(
